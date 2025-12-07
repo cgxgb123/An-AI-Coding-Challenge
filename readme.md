@@ -59,8 +59,6 @@ Hi!. My name is **Christian Blunt** and i’m an aspiring technologist and probl
 
 ## <a name="reflection"></a>Reflection:
 
-- ## <a name="reflection"></a> Reflection (5 bullets)
-
 - **Where AI saved time:**  
   AI generated the first working version of a modal focus trap and debounced search, which saved hours of trial-and-error around keyboard accessibility and real-time filtering performance.
 
@@ -87,8 +85,8 @@ Hi!. My name is **Christian Blunt** and i’m an aspiring technologist and probl
 
 Making the intent explicit and removing mutation confusion.
 
-**Accessibility improvement added:**  
-Added proper `aria-label` attributes to interactive buttons (Flip, Prev, Next, New Card, and modal controls), ensuring all controls are discernible to screen readers and keyboard-only users without altering the visible UI.
+- **Accessibility improvement added:**  
+  Added proper `aria-label` attributes to interactive buttons (Flip, Prev, Next, New Card, and modal controls), ensuring all controls are discernible to screen readers and keyboard-only users without altering the visible UI.
 
-**Prompt change that improved AI output:**  
-Switching from “generate study mode logic” to “ensure enterStudyMode cleans up listeners and prevents memory leaks” gave AI a more precise objective and stopped it from producing unstable event-handling code.
+- **Prompt change that improved AI output:**  
+  Switching from “generate study mode logic” to “ensure enterStudyMode cleans up listeners and prevents memory leaks” gave AI a more precise objective and stopped it from producing unstable event-handling code.
