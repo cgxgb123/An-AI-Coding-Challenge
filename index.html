@@ -4,9 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="./utils/css/styles.css" />
+    <!-- Modal Styles -->
+    <link rel="stylesheet" href="./utils/css/modal.css" />
     <!--JS-->
-    <script src="app.js" defer></script>
+    <script src="./utils/js/app.js" defer></script>
     <title>Flashcards App</title>
   </head>
   <body>
@@ -74,12 +76,34 @@
         </div>
       </main>
     </div>
+    <!-- Modal Overlay -->
+    <div
+      class="modal-overlay hidden"
+      id="deck-modal-overlay"
+      aria-hidden="true"
+    >
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <h2 id="modal-title">New Deck</h2>
+
+        <form id="deck-form">
+          <label for="deck-name">Deck name</label>
+          <input id="deck-name" name="deck-name" required />
+
+          <div class="modal-controls">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn" id="cancel-modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
 
     <footer class="app-footer">
       <p>Flashcards App © 2025</p>
     </footer>
-
-    <!-- JavaScript -->
-    <script src="app.js"></script>
   </body>
 </html>
