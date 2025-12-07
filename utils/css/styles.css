@@ -1,6 +1,3 @@
-/* ======================= */
-/* CSS VARIABLES & RESET   */
-/* ======================= */
 :root {
   --bg: #f7f7fa;
   --primary: #4b4df7;
@@ -26,9 +23,6 @@ body {
   flex-direction: column;
 }
 
-/* ======================= */
-/* PAGE LAYOUT             */
-/* ======================= */
 .app-header,
 .app-footer {
   background: var(--sidebar-bg);
@@ -47,9 +41,6 @@ body {
   padding: 1rem;
 }
 
-/* ======================= */
-/* SIDEBAR                 */
-/* ======================= */
 .sidebar {
   background: var(--sidebar-bg);
   border-radius: var(--radius);
@@ -77,9 +68,6 @@ body {
   opacity: 0.8;
 }
 
-/* ======================= */
-/* MAIN CONTENT            */
-/* ======================= */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -113,9 +101,6 @@ body {
   cursor: pointer;
 }
 
-/* ======================= */
-/* RESPONSIVE DESIGN       */
-/* ======================= */
 @media (max-width: 768px) {
   .layout {
     grid-template-columns: 1fr;
@@ -129,3 +114,82 @@ body {
     order: 1;
   }
 }
+/* FLASHCARD 3D FLIP */
+.flashcard {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 0; /* card handles padding */
+  min-height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  perspective: 1200px; /* enables 3D */
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  min-height: 220px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease;
+}
+
+.card.is-flipped {
+  transform: rotateY(180deg);
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  padding: 2rem;
+  border-radius: var(--radius);
+  background: var(--card-bg);
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Card list (optional) */
+.card-list {
+  margin-top: 1rem;
+}
+
+#card-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.card-list-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.card-preview-btn {
+  flex: 1;
+  text-align: left;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  cursor: pointer;
+}
+
+.card-edit-btn,
+.card-delete-btn {
+  padding: 0.3rem 0.6rem;
+}
+
+/* Reuse existing modal styles from Part 2:
+   .modal-overlay, .modal, .hidden, .btn, .btn-primary, etc. */
