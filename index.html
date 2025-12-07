@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css" />
+    <!--JS-->
+    <script src="app.js" defer></script>
+    <title>Flashcards App</title>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Flashcards</h1>
+      <button id="new-card-btn">+ New Card</button>
+    </header>
+
+    <div class="layout">
+      <!-- Sidebar / Deck Navigation -->
+      <nav class="sidebar">
+        <h2>Decks</h2>
+        <ul>
+          <li><button class="deck-btn">JavaScript</button></li>
+          <li><button class="deck-btn">HTML</button></li>
+          <li><button class="deck-btn">Algorithms</button></li>
+        </ul>
+      </nav>
+
+      <!-- Main Flashcard Area -->
+      <main class="main-content">
+        <section class="flashcard">
+          <div class="card-front">What is a variable?</div>
+          <div class="card-back">A container that stores a value.</div>
+        </section>
+
+        <div
+          class="controls"
+          role="group"
+          aria-label="Flashcard navigation controls"
+        >
+          <button id="prev-card" aria-label="Show previous flashcard">
+            ⟵ Prev
+          </button>
+          <button id="flip-card" aria-label="Flip flashcard">Flip</button>
+          <button id="next-card" aria-label="Show next flashcard">
+            Next ⟶
+          </button>
+        </div>
+      </main>
+    </div>
+
+    <footer class="app-footer">
+      <p>Flashcards App © 2025</p>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="app.js"></script>
+  </body>
+</html>
