@@ -8,7 +8,7 @@
     <!-- Modal Styles -->
     <link rel="stylesheet" href="./utils/css/modal.css" />
     <!--JS-->
-    <script src="./utils/js/app.js" defer></script>
+    <script type="module" src="./utils/js/app.js" defer></script>
     <title>Flashcards App</title>
   </head>
   <body>
@@ -76,6 +76,15 @@
         </div>
 
         <section class="card-list" aria-label="Cards in current deck">
+          <input
+            type="text"
+            id="card-search"
+            placeholder="Search cards..."
+            aria-label="Search cards"
+          />
+
+          <div id="search-count" aria-live="polite"></div>
+
           <ul id="card-list"></ul>
         </section>
       </main>

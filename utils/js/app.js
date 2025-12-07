@@ -1,3 +1,4 @@
+import { loadState, saveState } from "./storage.js";
 const cardElement = document.getElementById("study-card");
 const cardFrontEl = document.querySelector(".card-front");
 const cardBackEl = document.querySelector(".card-back");
@@ -12,19 +13,66 @@ const cardBackInput = document.getElementById("card-back-input");
 const cancelCardModalBtn = document.getElementById("cancel-card-modal");
 const cardModalTitle = document.getElementById("card-modal-title");
 const cardListEl = document.getElementById("card-list");
+const searchInput = document.getElementById("card-search");
+const searchCount = document.getElementById("search-count");
+
+const state = loadState();
+let cards = state.cards;
+let searchTimer = null;
+let searchQuery = "";
 
 let lastFocusedElement = null;
 
-let cards = [
-  {
-    id: Date.now(),
-    front: "What is a variable?",
-    back: "A container that stores a value.",
-  },
-];
-
 let currentIndex = 0;
 let editingCardId = null;
+if (searchInput) {
+  searchInput.addEventListener("input", () => {
+    clearTimeout(searchTimer);
+    searchQuery = searchInput.value.trim().toLowerCase();
+
+    searchTimer = setTimeout(() => {
+      renderSearchResults();
+    }, 300);
+  });
+}
+function renderSearchResults() {
+  if (!searchQuery) {
+    renderCardList();
+    searchCount.textContent = "";
+    return;
+  }
+
+  const matches = cards.filter(
+    (c) =>
+      c.front.toLowerCase().includes(searchQuery) ||
+      c.back.toLowerCase().includes(searchQuery)
+  );
+
+  searchCount.textContent = `${matches.length} match${
+    matches.length === 1 ? "" : "es"
+  }`;
+
+  renderFilteredList(matches);
+}
+function renderFilteredList(list) {
+  cardListEl.innerHTML = list
+    .map(
+      (card) => `
+      <li class="card-list-item" data-card-id="${card.id}">
+        <button class="card-preview-btn" type="button">
+          ${
+            card.front.length > 40
+              ? card.front.slice(0, 37) + "..."
+              : card.front
+          }
+        </button>
+        <button class="btn card-edit-btn" type="button">Edit</button>
+        <button class="btn card-delete-btn" type="button">Delete</button>
+      </li>
+    `
+    )
+    .join("");
+}
 
 function renderCurrentCard() {
   if (cards.length === 0) {
@@ -163,12 +211,15 @@ cardForm.addEventListener("submit", (e) => {
       back,
     };
     cards.push(newCard);
+    saveState({ cards });
+
     currentIndex = cards.length - 1;
   } else {
     const target = cards.find((c) => c.id === editingCardId);
     if (target) {
       target.front = front;
       target.back = back;
+      saveState({ cards });
     }
   }
 
@@ -194,6 +245,7 @@ if (cardListEl) {
       const idx = cards.findIndex((c) => c.id === cardId);
       if (idx !== -1) {
         cards.splice(idx, 1);
+        saveState({ cards });
       }
 
       if (currentIndex >= cards.length) {

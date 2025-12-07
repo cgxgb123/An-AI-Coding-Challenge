@@ -13,6 +13,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: system-ui, sans-serif;
+  list-style-type: none;
 }
 
 body {
@@ -115,45 +116,58 @@ body {
   }
 }
 /* FLASHCARD 3D FLIP */
+/* FLASHCARD 3D FLIP */
 .flashcard {
   background: var(--card-bg);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 0; /* card handles padding */
+  padding: 0;
   min-height: 220px;
   display: flex;
   justify-content: center;
   align-items: stretch;
-  perspective: 1200px; /* enables 3D */
+  perspective: 1200px;
 }
 
 .card {
   position: relative;
   width: 100%;
-  min-height: 220px;
-  transform-style: preserve-3d;
-  transition: transform 0.6s ease;
+  height: 100%;
+  cursor: pointer;
+  transform-style: preserve-3d; /* 🔥 critical */
 }
 
-.card.is-flipped {
-  transform: rotateY(180deg);
-}
-
+/* single clean face declaration */
 .card-face {
   position: absolute;
   inset: 0;
   padding: 2rem;
   border-radius: var(--radius);
   background: var(--card-bg);
-  backface-visibility: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
+  backface-visibility: hidden;
+  transition: transform 0.6s ease;
   font-size: 1.2rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.card-front {
+  transform: rotateY(0deg);
 }
 
 .card-back {
   transform: rotateY(180deg);
+}
+
+/* is-flipped */
+.card.is-flipped .card-front {
+  transform: rotateY(180deg);
+}
+
+.card.is-flipped .card-back {
+  transform: rotateY(0deg);
 }
 
 /* Card list (optional) */

@@ -19,3 +19,89 @@
 .hidden {
   display: none;
 }
+/* ===== MODAL LAYER ===== */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+/* ===== MODAL WINDOW ===== */
+
+.modal {
+  background: #ffffff;
+  padding: 1.75rem 2rem;
+  border-radius: 12px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+  animation: modal-pop 0.22s ease-out;
+}
+
+@keyframes modal-pop {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ===== FORM CONTROLS ===== */
+
+.modal label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-weight: 500;
+}
+
+.modal textarea {
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+.modal textarea:focus {
+  border-color: #007aff;
+  outline: none;
+}
+
+.modal-controls {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+}
+
+.modal .btn-primary {
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+}
+
+.modal .btn {
+  padding: 0.45rem 0.85rem;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+}
+
+.modal .btn:hover {
+  background: #f3f3f3;
+}
