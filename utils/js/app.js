@@ -94,6 +94,16 @@ function renderCurrentCard() {
 
 function renderCardList() {
   if (!cardListEl) return;
+
+  if (cards.length === 0) {
+    document.getElementById("empty-state").textContent =
+      "No cards yet — press “+ New Card” to create one.";
+    document.getElementById("empty-state").classList.remove("hidden");
+    cardListEl.innerHTML = "";
+    return;
+  }
+
+  document.getElementById("empty-state").classList.add("hidden");
   cardListEl.innerHTML = cards
     .map(
       (card) => `
@@ -202,7 +212,13 @@ cardForm.addEventListener("submit", (e) => {
 
   const front = cardFrontInput.value.trim();
   const back = cardBackInput.value.trim();
-  if (!front || !back) return;
+  const errorMsg = document.getElementById("modal-error");
+  if (!front || !back) {
+    errorMsg.textContent = "Both front and back text are required.";
+    errorMsg.classList.remove("hidden");
+    return;
+  }
+  errorMsg.classList.add("hidden");
 
   if (editingCardId === null) {
     const newCard = {

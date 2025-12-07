@@ -19,7 +19,7 @@
         id="new-card-btn"
         aria-label="Create a new flashcard"
       >
-        + New Card
+        New Card
       </button>
     </header>
 
@@ -84,6 +84,7 @@
           />
 
           <div id="search-count" aria-live="polite"></div>
+          <div id="empty-state" class="hidden" aria-live="polite"></div>
 
           <ul id="card-list"></ul>
         </section>
@@ -109,6 +110,7 @@
 
           <label for="card-back-input">Back</label>
           <textarea id="card-back-input" name="back" required></textarea>
+          <p id="modal-error" class="hidden" role="alert"></p>
 
           <div class="modal-controls">
             <button type="submit" class="btn btn-primary">Save</button>

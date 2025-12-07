@@ -116,7 +116,6 @@ body {
   }
 }
 /* FLASHCARD 3D FLIP */
-/* FLASHCARD 3D FLIP */
 .flashcard {
   background: var(--card-bg);
   border-radius: var(--radius);
@@ -204,6 +203,48 @@ body {
 .card-delete-btn {
   padding: 0.3rem 0.6rem;
 }
+/* NEW CARD BUTTON STYLES */
+#new-card-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
 
-/* Reuse existing modal styles from Part 2:
-   .modal-overlay, .modal, .hidden, .btn, .btn-primary, etc. */
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+
+  transition: background 0.25s ease, transform 0.15s ease;
+}
+
+/* Hover + focus*/
+#new-card-btn:hover,
+#new-card-btn:focus-visible {
+  background: #3c3ef0;
+  transform: translateY(-1px);
+  outline: none;
+}
+
+/* Active / clicked */
+#new-card-btn:active {
+  background: #2f31d9;
+  transform: translateY(0);
+}
+
+/* Keyboard accessibility */
+#new-card-btn:focus-visible {
+  box-shadow: 0 0 0 3px rgba(75, 77, 247, 0.4);
+}
+
+/* Optional icon styling if you add one later */
+#new-card-btn::before {
+  content: "+";
+  font-weight: 700;
+  margin-right: 0.25rem;
+}
